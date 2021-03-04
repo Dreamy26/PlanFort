@@ -1,0 +1,12 @@
+﻿@model PlanFort.Models.ViewModels.BusinessFormVM
+<form asp-controller="Event" asp-action="BusinessFormResult" method="post">
+
+    <label asp-for="City"></label>
+    <input asp-for="City" />
+
+    <label asp-for="Category"></label>
+    <input asp-for="Category" />
+
+    <button>Search</button>
+
+</form>
