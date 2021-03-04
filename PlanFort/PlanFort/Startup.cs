@@ -12,6 +12,8 @@ using PlanFort.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PlanFort.Services;
+using System.Net.Http.Headers;
 
 namespace PlanFort
 {
@@ -28,13 +30,33 @@ namespace PlanFort
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDatabaseDeveloperPageExceptionFilter();
+            {
+                var connectionString = Configuration.GetConnectionString("DefaultConnection");
+                options.UseSqlServer(connectionString);
+            });
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<IdentityUser>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+
+            }).AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddHttpClient<SeatGeekClient>(httpClient =>
+            {
+                httpClient.BaseAddress = new Uri("https://api.seatgeek.com/2");
+
+            });
+            services.AddHttpClient<YelpClient>(httpClient =>
+            {
+          
+                httpClient.BaseAddress = new Uri("https://api.yelp.com/v3/");
+                httpClient.DefaultRequestHeaders.Add
+                ("Authorization", "Bearer W3vRwSOPMcpBMhoJKscEEDbPuDpTBJI9hZl63oU5sXhCkMGR2OmWN8PFywOLoj0z93DRQjy2Ma4PQDMBbrEGJK_CEhkL9OFj_DqPwiGvs5_2V0R_9OvBYNLS9DxAYHYx");
+
+            });
+
             services.AddControllersWithViews();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
