@@ -1,0 +1,9 @@
+﻿@model PlanFort.Models.ViewModels.EventCityFormResultVM
+
+<ul>
+    @foreach (var e in Model.Events)
+    {
+        <li>@e.Title</li>
+        <li>@e.City</li>
+    }
+</ul>
