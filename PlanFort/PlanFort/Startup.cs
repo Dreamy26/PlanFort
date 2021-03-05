@@ -29,9 +29,13 @@ namespace PlanFort
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+
+            var secretVariable = Configuration.GetSection("ConnectionStrings:DefaultConnection").Value;    // <--- This is finding the environment variable and pulling that into the app
+                                                                                                           //     and giving us the connection string to the database
+
+            services.AddDbContext<PlanFortDBContext>(options =>
             {
-                var connectionString = Configuration.GetConnectionString("DefaultConnection");
+                var connectionString = Configuration.GetConnectionString(secretVariable);  // <--- Here we are using the variable to actually connect to the database
                 options.UseSqlServer(connectionString);
             });
 
@@ -39,7 +43,7 @@ namespace PlanFort
             {
                 options.SignIn.RequireConfirmedAccount = false;
 
-            }).AddEntityFrameworkStores<ApplicationDbContext>();
+            }).AddEntityFrameworkStores<PlanFortDBContext>();
 
             services.AddHttpClient<SeatGeekClient>(httpClient =>
             {
@@ -53,13 +57,8 @@ namespace PlanFort
                 httpClient.DefaultRequestHeaders.Add
                 ("Authorization", "Bearer W3vRwSOPMcpBMhoJKscEEDbPuDpTBJI9hZl63oU5sXhCkMGR2OmWN8PFywOLoj0z93DRQjy2Ma4PQDMBbrEGJK_CEhkL9OFj_DqPwiGvs5_2V0R_9OvBYNLS9DxAYHYx");
 
-            });
+            });         
 
-<<<<<<< HEAD
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-=======
->>>>>>> 2ba33e3a30b13e843dbda8513224aa3e7a9c9fd5
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

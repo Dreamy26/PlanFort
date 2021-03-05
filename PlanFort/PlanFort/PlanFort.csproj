@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\DALModel\**" />
+    <Content Remove="Models\DALModel\**" />
+    <EmbeddedResource Remove="Models\DALModel\**" />
+    <None Remove="Models\DALModel\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
   </ItemGroup>
 
@@ -21,13 +28,5 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\DALModel\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
   </ItemGroup>
 </Project>
