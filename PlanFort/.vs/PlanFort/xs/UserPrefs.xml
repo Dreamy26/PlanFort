@@ -1,24 +1,30 @@
 ﻿<Properties StartupConfiguration="{6D5C8543-0877-42DF-96DF-53825B561711}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="PlanFort/Services/SeetGeakClients.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PlanFort/Services/YelpClient.cs">
     <Files>
       <File FileName="PlanFort/Areas/Identity/Pages/_ViewStart.cshtml" Line="1" Column="1" />
-      <File FileName="PlanFort/Controllers/HomeController.cs" Line="1" Column="1" />
-      <File FileName="PlanFort/Services/SeetGeakClients.cs" Line="7" Column="1" />
-      <File FileName="PlanFort/Startup.cs" Line="35" Column="113" />
-      <File FileName="PlanFort/Data/Migrations/ApplicationDbContextModelSnapshot.cs" Line="1" Column="1" />
-      <File FileName="PlanFort/PlanFort.csproj" Line="1" Column="1" />
-      <File FileName="PlanFort/appsettings.json" Line="3" Column="71" />
+      <File FileName="PlanFort/Controllers/HomeController.cs" />
+      <File FileName="PlanFort/Startup.cs" />
+      <File FileName="PlanFort/Data/Migrations/ApplicationDbContextModelSnapshot.cs" />
+      <File FileName="PlanFort/PlanFort.csproj" />
+      <File FileName="PlanFort/appsettings.json" />
+      <File FileName="PlanFort/Services/SeatGeekClient.cs" Line="1" Column="1" />
+      <File FileName="PlanFort/Services/YelpClient.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="PlanFort" expanded="True">
             <Node name="PlanFort" expanded="True">
+              <Node name="Areas" expanded="True">
+                <Node name="Identity" expanded="True">
+                  <Node name="Pages" expanded="True" />
+                </Node>
+              </Node>
               <Node name="Data" expanded="True">
                 <Node name="Migrations" expanded="True" />
               </Node>
               <Node name="Services" expanded="True">
-                <Node name="SeetGeakClients.cs" selected="True" />
+                <Node name="YelpClient.cs" selected="True" />
               </Node>
               <Node name="Views" expanded="True">
                 <Node name="Shared" expanded="True" />
