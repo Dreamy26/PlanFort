@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model PlanFort.Models.ViewModels.ViewTripsViewModel
+
+
+<ul class="list-group">
+    @foreach (var trip in Model.Trips)
+    {
+        <li>
+
+            city: @trip.City
+
+        </li>
+        @foreach (var item in Model.Events)
+        {
+            if (item.ParentTripId == trip.TripID)
+            {
+                <p>Venue Name: @item.name</p>
+                <p>Event Address: @item.address </p>
+                <p> Performer  : @item.performerName</p>
+            }
+        }
+
+
+        @foreach (var business in Model.Businesses)
+        {
+            if (business.ParentTripId == trip.TripID)
+            {
+                <p>: @business.address1 @business.address2 @business.address3</p>
+                <p>Name: @business.name </p>
+                <p> Phone Number: @business.phoneNumber</p>
+            }
+        }
+    }
+</ul>

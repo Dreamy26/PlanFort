@@ -17,13 +17,13 @@ namespace PlanFort.Models.DALModels
         [ForeignKey("User")]
         public string UserId { get; set; }
         public IdentityUser User { get; set; }
-        public string type { get; set; }
+       
         public int id { get; set; }
         public string address { get; set; }
         public string city { get; set; }
         public string performerType { get; set; }
         public string performerName { get; set; }
-        public string performerImage { get; set; }
+        public string name { get; set; }
     }
 
 
