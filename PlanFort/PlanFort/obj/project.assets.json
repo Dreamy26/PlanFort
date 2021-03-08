@@ -9414,28 +9414,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/dreamy/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\verke\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dreamy/Projects/grandCircus_New/03_march/PlanFort/PlanFort/PlanFort/PlanFort/PlanFort.csproj",
+      "projectUniqueName": "C:\\Users\\verke\\source\\repos\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj",
       "projectName": "PlanFort",
-      "projectPath": "/Users/dreamy/Projects/grandCircus_New/03_march/PlanFort/PlanFort/PlanFort/PlanFort/PlanFort.csproj",
-      "packagesPath": "/Users/dreamy/.nuget/packages/",
-      "outputPath": "/Users/dreamy/Projects/grandCircus_New/03_march/PlanFort/PlanFort/PlanFort/PlanFort/obj/",
+      "projectPath": "C:\\Users\\verke\\source\\repos\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj",
+      "packagesPath": "C:\\Users\\verke\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\verke\\source\\repos\\PlanFort\\PlanFort\\PlanFort\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "/Users/dreamy/.config/NuGet/NuGet.Config"
+        "C:\\Users\\verke\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -9507,7 +9505,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

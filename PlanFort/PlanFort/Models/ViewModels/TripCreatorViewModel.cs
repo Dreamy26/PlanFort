@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace PlanFort.Models.ViewModels
 {
-    public class EventCityFormVM
+    public class TripCreatorViewModel
     {
         public string City { get; set; }
 
-        public int TripID { get; set; }
     }
 }

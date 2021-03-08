@@ -29,6 +29,14 @@ namespace PlanFort.Services
             //Calling SeatGeek API and searching events for certain cities
         }
 
+        public async Task<EventsResponseModel> GetEventByID(int id )
+        {
+            return await GetAsync<EventsResponseModel>
+                ($"/events/{id}&client_id=MjE1NjY1OTZ8MTYxNDY1MTAwMC41MDk3Mjk2");
+
+            //Calling SeatGeek API and searching events for certain cities
+        }
+
 
         private async Task<T> GetAsync<T>(string endPoint)
         {
@@ -48,6 +56,11 @@ namespace PlanFort.Services
             {
                 throw new HttpRequestException("Final Space API returned bad response");
             }
+        }
+
+        internal Task GetEventID(int id)
+        {
+            throw new NotImplementedException();
         }
     }   
 }

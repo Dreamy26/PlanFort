@@ -5,5 +5,10 @@
     {
         <li>@e.Title</li>
         <li>@e.City</li>
+
+
+        <a asp-controller="Event" asp-action="AddEvent" asp-route-id = "@e.Id" asp-route-TripId =" @Model.TripID">Add Event</a>
+  
     }
+
 </ul>
