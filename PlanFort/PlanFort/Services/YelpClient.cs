@@ -1,4 +1,5 @@
-﻿using PlanFort.Models.YelpAPIModel;
+﻿using PlanFort.Models.APIModels.YelpAPIModel;
+using PlanFort.Models.YelpAPIModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,17 @@ namespace PlanFort.Services
         {
             return await GetAsync<BusinessResponseModel>
                 ($"businesses/search?location={city}&categories={business}");
+        }
+        public async Task<BusinessResponseModel> GetBusinessByCity(string city)
+        {
+            return await GetAsync<BusinessResponseModel>
+                ($"businesses/search?location={city}");
+        }
+
+        public async Task<SingleBusinessModel> GetBusinessById(string id)
+        {
+            return await GetAsync<SingleBusinessModel>
+                ($"businesses/{id}");
         }
 
         private async Task<T> GetAsync<T>(string endPoint)

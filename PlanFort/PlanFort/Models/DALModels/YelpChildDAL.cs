@@ -14,10 +14,6 @@ namespace PlanFort.Models.DALModels
         public int ParentTripID { get; set; }
         public TripParentDAL Trip { get; set; }
 
-        [ForeignKey("User")]
-        public string UserId { get; set; }
-        public IdentityUser User { get; set; }
-
         public string id { get; set; }
         public string alias { get; set; }
         public string name { get; set; }
@@ -25,8 +21,7 @@ namespace PlanFort.Models.DALModels
         public bool is_closed { get; set; }
         public string url { get; set; }
         public int review_count { get; set; }
-        public float rating { get; set; }
-        public string[] transactions { get; set; }
+        public float rating { get; set; }        
         public string price { get; set; }
         public string address1 { get; set; }
         public string address2 { get; set; }

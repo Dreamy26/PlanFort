@@ -51,6 +51,7 @@ namespace PlanFort.Controllers
             _planFortDBContext.SaveChanges();
 
             viewModel.TripID = eventHeader.TripID;
+            
 
 
             return View(viewModel);
@@ -64,7 +65,7 @@ namespace PlanFort.Controllers
             var performer = response.events[0].performers;
             var venue = response.events[0].venue;
 
-
+            eventChild.ParentTripID = TripId;
             eventChild.performerName = performer[0].name;
             eventChild.performerType = performer[0].type;
             eventChild.city = venue.city;
@@ -74,7 +75,7 @@ namespace PlanFort.Controllers
             eventChild.name = venue.name;
             _planFortDBContext.SeatGeekChild.Add(eventChild);
             _planFortDBContext.SaveChanges();
-            return View();
+            return RedirectToAction("ViewTrips", "Home");
         }
     }
 }

@@ -7,6 +7,7 @@ namespace PlanFort.Models.DomainModels
 {
     public class BusinessChild
     {
+        public string id { get; set; }
         public string address1 { get; set; }
         public string address2 { get; set; }
         public string address3 { get; set; }

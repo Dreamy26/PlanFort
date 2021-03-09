@@ -30,13 +30,13 @@ namespace PlanFort
         public void ConfigureServices(IServiceCollection services)
         {
 
-            var secretVariable = Configuration.GetSection("ConnectionStrings:DefaultConnection").Value;    // <--- This is finding the environment variable and pulling that into the app
-                                                                                                           //     and giving us the connection string to the database
+            // <--- This is finding the environment variable and pulling that into the app
+            //     and giving us the connection string to the database
 
             services.AddDbContext<PlanFortDBContext>(options =>
             {
-                var connectionString = Configuration.GetConnectionString(secretVariable);  // <--- Here we are using the variable to actually connect to the database
-                options.UseSqlServer(connectionString);
+                var connectionString = Configuration.GetConnectionString("DefaultConnection");
+                options.UseSqlServer(connectionString);    // <--- Here we are using the variable to actually connect to the database
             });
 
             services.AddDefaultIdentity<IdentityUser>(options =>
