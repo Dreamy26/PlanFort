@@ -73,7 +73,7 @@ namespace PlanFort.Controllers
 
             var viewModel = new ViewTripsViewModel();
             viewModel.Trips = eventHeaders
-                .Select(trip => new TripHeader() { City = trip.City, TripID = trip.TripID })
+                .Select(trip => new TripHeader() { City = trip.City, TripID = trip.TripID, IsComplete = trip.IsComplete})
                 .ToList();
 
             viewModel.Businesses = yelpChildren

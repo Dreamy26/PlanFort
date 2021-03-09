@@ -9,7 +9,8 @@ namespace PlanFort.Models.DomainModels
     {
         public int TripID { get; set; }
         public string City { get; set; }
+        public bool IsComplete { get; set; }
 
-        
+
     }
 }
