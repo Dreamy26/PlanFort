@@ -29,7 +29,7 @@ namespace PlanFort.Controllers
             _planFortDBContext = planFortDBContext;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return View();
         }
@@ -53,7 +53,7 @@ namespace PlanFort.Controllers
 
         }
 
-
+        [Authorize]
         public IActionResult ViewTrips()
         {
             var userID = _userManager.GetUserId(User);
@@ -63,12 +63,12 @@ namespace PlanFort.Controllers
 
 
             var yelpChildren = _planFortDBContext.YelpChild
-            .Where(eventItem => eventItem.UserId == userID)
+            .Where(eventItem => eventItem.Trip.UserId == userID)
             .ToList();
 
 
             var seatGeekChildren = _planFortDBContext.SeatGeekChild
-            .Where(eventItem => eventItem.UserId == userID)
+            .Where(eventItem => eventItem.Trip.UserId == userID)
             .ToList();
 
             var viewModel = new ViewTripsViewModel();

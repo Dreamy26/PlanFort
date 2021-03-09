@@ -19,9 +19,11 @@
         {
             if (item.ParentTripId == trip.TripID)
             {
+                <li>
                 <p>Venue Name: @item.name</p>
                 <p>Event Address: @item.address </p>
                 <p> Performer  : @item.performerName</p>
+                </li>
             }
         }
 
@@ -30,10 +32,14 @@
         {
             if (business.ParentTripId == trip.TripID)
             {
+                <li>
                 <p>: @business.address1 @business.address2 @business.address3</p>
                 <p>Name: @business.name </p>
                 <p> Phone Number: @business.phoneNumber</p>
+                </li>
             }
         }
+        <li><a asp-controller="Business" asp-action="BusinessFormResult" asp-route-city="@trip.City" asp-route-TripId="@trip.TripID">Add Business</a></li>
+        
     }
 </ul>

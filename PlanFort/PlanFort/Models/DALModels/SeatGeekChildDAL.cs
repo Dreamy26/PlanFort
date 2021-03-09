@@ -13,11 +13,7 @@ namespace PlanFort.Models.DALModels
         [ForeignKey("Trip")]       // "ParentTripID" is actual field name in SeatGeekChild table, line 32 and 34 tell the system where to find the reference
         public int ParentTripID { get; set; }
         public TripParentDAL Trip { get; set; }
-
-        [ForeignKey("User")]
-        public string UserId { get; set; }
-        public IdentityUser User { get; set; }
-       
+      
         public int id { get; set; }
         public string address { get; set; }
         public string city { get; set; }

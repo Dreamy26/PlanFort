@@ -9,5 +9,8 @@ namespace PlanFort.Models.ViewModels
     public class BusinessFormResultVM
     {
         public IEnumerable<BusinessVM> Businesses { get; set; }
+
+        public int TripID { get; set; }
+       
     }
 }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\verke\\source\\repos\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj": {}
+    "C:\\Users\\dylan\\OneDrive\\Documents\\GrandCircus\\Final Project\\PlanFort\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj": {}
   },
   "projects": {
-    "C:\\Users\\verke\\source\\repos\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj": {
+    "C:\\Users\\dylan\\OneDrive\\Documents\\GrandCircus\\Final Project\\PlanFort\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\verke\\source\\repos\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj",
+        "projectUniqueName": "C:\\Users\\dylan\\OneDrive\\Documents\\GrandCircus\\Final Project\\PlanFort\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj",
         "projectName": "PlanFort",
-        "projectPath": "C:\\Users\\verke\\source\\repos\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj",
-        "packagesPath": "C:\\Users\\verke\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\verke\\source\\repos\\PlanFort\\PlanFort\\PlanFort\\obj\\",
+        "projectPath": "C:\\Users\\dylan\\OneDrive\\Documents\\GrandCircus\\Final Project\\PlanFort\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj",
+        "packagesPath": "C:\\Users\\dylan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dylan\\OneDrive\\Documents\\GrandCircus\\Final Project\\PlanFort\\PlanFort\\PlanFort\\PlanFort\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\verke\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dylan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -42,15 +42,15 @@
           "dependencies": {
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.1.12, )"
+              "version": "[5.0.3, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.1.12, )"
+              "version": "[5.0.3, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[3.1.12, )"
+              "version": "[5.0.3, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -58,17 +58,13 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.3, )"
-            },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
-              "target": "Package",
-              "version": "[5.0.3, )"
+              "version": "[5.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.12, )"
+              "version": "[5.0.3, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -93,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

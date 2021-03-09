@@ -8,5 +8,9 @@ namespace PlanFort.Models.DomainModels
     public class BusinessVM
     {
         public string Name { get; set; }
+
+        public string title { get; set; }
+
+        public string id { get; set; }
     }
 }

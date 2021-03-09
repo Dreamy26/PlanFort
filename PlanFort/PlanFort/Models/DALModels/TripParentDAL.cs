@@ -21,6 +21,10 @@ namespace PlanFort.Models.DALModels
 
         public string City { get; set; }
 
+        public IEnumerable<YelpChildDAL> YelpChildren { get; set; }
+
+        public IEnumerable<SeatGeekChildDAL> SeatGeekChildren { get; set; }
+
     }
 
 

@@ -9,5 +9,7 @@ namespace PlanFort.Models.ViewModels
     {
         public string City { get; set; }
         public string Category { get; set; }
+
+        public int TripID { get; set; }
     }
 }

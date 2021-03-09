@@ -1,0 +1,13 @@
+﻿
+
+@model PlanFort.Models.ViewModels.BusinessFormResultVM
+
+<ul>
+    @foreach (var business in Model.Businesses)
+    {
+        <li>@business.Name</li>
+        <li>@business.title</li>
+        <li><a asp-controller="Business" asp-action="AddBusiness" asp-route-id="@business.id" asp-route-TripId="@Model.TripID">Add Business</a></li>
+
+    }
+</ul>

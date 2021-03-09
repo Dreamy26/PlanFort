@@ -32,7 +32,7 @@ namespace PlanFort.Services
         public async Task<EventsResponseModel> GetEventByID(int id )
         {
             return await GetAsync<EventsResponseModel>
-                ($"/events/{id}&client_id=MjE1NjY1OTZ8MTYxNDY1MTAwMC41MDk3Mjk2");
+                ($"/events/?id={id}&client_id=MjE1NjY1OTZ8MTYxNDY1MTAwMC41MDk3Mjk2");
 
             //Calling SeatGeek API and searching events for certain cities
         }
