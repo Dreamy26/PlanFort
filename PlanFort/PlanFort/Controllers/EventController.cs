@@ -47,11 +47,13 @@ namespace PlanFort.Controllers
             eventHeader.City = model.City;
             eventHeader.UserId = _userManager.GetUserId(User);
 
+            eventHeader.IsComplete = false;
+
             _planFortDBContext.TripParent.Add(eventHeader);
             _planFortDBContext.SaveChanges();
 
             viewModel.TripID = eventHeader.TripID;
-            
+               
 
 
             return View(viewModel);

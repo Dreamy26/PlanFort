@@ -24,6 +24,7 @@ namespace PlanFort.Models.DALModels
         public IEnumerable<YelpChildDAL> YelpChildren { get; set; }
 
         public IEnumerable<SeatGeekChildDAL> SeatGeekChildren { get; set; }
+        public bool IsComplete { get; set; }
 
     }
 

@@ -10,20 +10,36 @@
 <ul class="list-group">
     @foreach (var trip in Model.Trips)
     {
-        <li>
+     <li>
 
-            city: @trip.City
+        <p>city: @trip.City</p>
+        @if (trip.IsComplete == true)
+        {
+            <label>Is Trip Complete?</label>
+            <input type="checkbox" checked onclick="return false">
+        }
+        else
+        {
+            <label>Is Trip Complete?</label>
+            <input type="checkbox" unchecked>
+            <br />
+            <a asp-controller="Update" asp-action="MarkTripComplete" asp-route-tripId="@trip.TripID">Mark Trip Complete</a>
+        }
+        
 
-        </li>
+    }
+     </li>
         @foreach (var item in Model.Events)
         {
             if (item.ParentTripId == trip.TripID)
             {
                 <li>
-                <p>Venue Name: @item.name</p>
-                <p>Event Address: @item.address </p>
-                <p> Performer  : @item.performerName</p>
+                    <p>Venue Name: @item.name</p>
+                    <p>Event Address: @item.address </p>
+                    <p> Performer  : @item.performerName</p>
+
                 </li>
+
             }
         }
 
@@ -41,5 +57,5 @@
         }
         <li><a asp-controller="Business" asp-action="BusinessFormResult" asp-route-city="@trip.City" asp-route-TripId="@trip.TripID">Add Business</a></li>
         
-    }
+     }
 </ul>
