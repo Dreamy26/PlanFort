@@ -7494,26 +7494,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\there\\.nuget\\packages\\": {}
+    "/Users/dreamy/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\there\\Downloads\\Grand Circus\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj",
+      "projectUniqueName": "/Users/dreamy/Projects/grandCircus_New/03_march/PlanFort/PlanFort/PlanFort/PlanFort/PlanFort.csproj",
       "projectName": "PlanFort",
-      "projectPath": "C:\\Users\\there\\Downloads\\Grand Circus\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj",
-      "packagesPath": "C:\\Users\\there\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\there\\Downloads\\Grand Circus\\PlanFort\\PlanFort\\PlanFort\\obj\\",
+      "projectPath": "/Users/dreamy/Projects/grandCircus_New/03_march/PlanFort/PlanFort/PlanFort/PlanFort/PlanFort.csproj",
+      "packagesPath": "/Users/dreamy/.nuget/packages/",
+      "outputPath": "/Users/dreamy/Projects/grandCircus_New/03_march/PlanFort/PlanFort/PlanFort/PlanFort/obj/",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\there\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/dreamy/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -7581,7 +7583,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
       }
     }
   }
