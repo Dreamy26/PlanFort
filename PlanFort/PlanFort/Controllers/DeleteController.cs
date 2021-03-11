@@ -57,11 +57,11 @@ namespace PlanFort.Controllers
         }
 
         // Delete a business 
-        public IActionResult DeleteBusiness(int yelpChildId)
+        public IActionResult DeleteBusiness(int YelpChildId)
         {
             //varible names are lowercase 
             YelpChildDAL businessDAL = _planFortDBContext.YelpChild
-                .Where(business => business.YelpChildId == yelpChildId)
+                .Where(business => business.YelpChildId == YelpChildId)
                 .FirstOrDefault();
 
             _planFortDBContext.Remove(businessDAL);

@@ -76,6 +76,8 @@ namespace PlanFort.Controllers
             businessChild.zip_code = location.zip_code;
             businessChild.phone = response.phone;
             businessChild.display_phone = response.display_phone;
+            businessChild.price = response.price;
+            
 
             _planFortDBContext.YelpChild.Add(businessChild);
             _planFortDBContext.SaveChanges();
