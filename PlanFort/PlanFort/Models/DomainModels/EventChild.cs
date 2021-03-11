@@ -14,6 +14,6 @@ namespace PlanFort.Models.DomainModels
         public string performerName { get; set; }
         public string name { get; set; }
         public int ParentTripId { get; set; }
-
+        public int SeatGeekChildId { get; set; }
     }
 }

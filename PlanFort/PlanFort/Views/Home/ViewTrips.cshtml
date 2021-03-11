@@ -10,7 +10,7 @@
 <ul class="list-group">
     @foreach (var trip in Model.Trips)
     {
-     <li>
+    <li>
 
         <p>city: @trip.City</p>
         @if (trip.IsComplete == true)
@@ -25,20 +25,23 @@
             <br />
             <a asp-controller="Update" asp-action="MarkTripComplete" asp-route-tripId="@trip.TripID">Mark Trip Complete</a>
         }
-        
 
-    }
-     </li>
+        <a asp-controller="Delete" asp-action="DeleteTrip" asp-route-tripId="@trip.TripID">Delete Trip</a>
+
+
+        }
+    </li>
         @foreach (var item in Model.Events)
         {
             if (item.ParentTripId == trip.TripID)
             {
-                <li>
-                    <p>Venue Name: @item.name</p>
-                    <p>Event Address: @item.address </p>
-                    <p> Performer  : @item.performerName</p>
+<li>
+    <p>Venue Name: @item.name</p>
+    <p>Event Address: @item.address </p>
+    <p> Performer  : @item.performerName</p>
+    <a asp-controller="Delete" asp-action="DeleteEvent" asp-route-seatGeekChildId="@item.SeatGeekChildId">Delete Event</a>
 
-                </li>
+</li>
 
             }
         }
@@ -48,11 +51,12 @@
         {
             if (business.ParentTripId == trip.TripID)
             {
-                <li>
-                <p>: @business.address1 @business.address2 @business.address3</p>
-                <p>Name: @business.name </p>
-                <p> Phone Number: @business.phoneNumber</p>
-                </li>
+<li>
+    <p>: @business.address1 @business.address2 @business.address3</p>
+    <p>Name: @business.name </p>
+    <p> Phone Number: @business.phoneNumber</p>
+    <a asp-controller="Delete" asp-action="DeleteBusiness" asp-route-yelpChildId="@business.YelpChildId">Delete Business</a>
+</li>
             }
         }
         <li><a asp-controller="Business" asp-action="BusinessFormResult" asp-route-city="@trip.City" asp-route-TripId="@trip.TripID">Add Business</a></li>

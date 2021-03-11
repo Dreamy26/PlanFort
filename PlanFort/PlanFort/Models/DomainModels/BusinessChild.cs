@@ -11,12 +11,10 @@ namespace PlanFort.Models.DomainModels
         public string address1 { get; set; }
         public string address2 { get; set; }
         public string address3 { get; set; }
-
         public string name { get; set; }
-
         public string phoneNumber { get; set; }
-
         public int ParentTripId { get; set; }
+        public int YelpChildId { get; set; }
 
     }
 }

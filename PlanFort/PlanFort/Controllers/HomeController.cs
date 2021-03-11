@@ -81,7 +81,7 @@ namespace PlanFort.Controllers
                .ToList();
 
             viewModel.Events = seatGeekChildren
-               .Select(item => new EventChild() { name = item.name, address = item.address, city = item.city, performerName = item.performerName, performerType = item.performerType, id = item.id, ParentTripId = item.ParentTripID })
+               .Select(item => new EventChild() { name = item.name, address = item.address, city = item.city, performerName = item.performerName, performerType = item.performerType, id = item.id, ParentTripId = item.ParentTripID, SeatGeekChildId = item.SeatGeekChildId })
                .ToList();
 
             return View(viewModel);
