@@ -8,58 +8,65 @@
 
 
 <ul class="list-group">
+     
     @foreach (var trip in Model.Trips)
     {
-    <li>
-
-        <p>city: @trip.City</p>
-        @if (trip.IsComplete == true)
-        {
-            <label>Is Trip Complete?</label>
-            <input type="checkbox" checked onclick="return false">
-        }
-        else
-        {
-            <label>Is Trip Complete?</label>
-            <input type="checkbox" unchecked>
-            <br />
-            <a asp-controller="Update" asp-action="MarkTripComplete" asp-route-tripId="@trip.TripID">Mark Trip Complete</a>
-        }
-
-        <a asp-controller="Delete" asp-action="DeleteTrip" asp-route-tripId="@trip.TripID">Delete Trip</a>
-
-
-        }
-    </li>
-        @foreach (var item in Model.Events)
-        {
-            if (item.ParentTripId == trip.TripID)
-            {
-<li>
-    <p>Venue Name: @item.name</p>
-    <p>Event Address: @item.address </p>
-    <p> Performer  : @item.performerName</p>
-    <a asp-controller="Delete" asp-action="DeleteEvent" asp-route-seatGeekChildId="@item.SeatGeekChildId">Delete Event</a>
-
-</li>
-
-            }
-        }
-
-
-        @foreach (var business in Model.Businesses)
-        {
-            if (business.ParentTripId == trip.TripID)
-            {
-<li>
-    <p>: @business.address1 @business.address2 @business.address3</p>
-    <p>Name: @business.name </p>
-    <p> Phone Number: @business.phoneNumber</p>
-    <a asp-controller="Delete" asp-action="DeleteBusiness" asp-route-yelpChildId="@business.YelpChildId">Delete Business</a>
-</li>
-            }
-        }
-        <li><a asp-controller="Business" asp-action="BusinessFormResult" asp-route-city="@trip.City" asp-route-TripId="@trip.TripID">Add Business</a></li>
         
-     }
+            <li>
+                <h1>Trip:</h1>
+                <H2>city: @trip.City</H2> 
+                <a asp-controller="Delete" asp-action="DeleteTrip" asp-route-tripId="@trip.TripID">Delete Trip</a>
+                @if (trip.IsComplete == true)
+                {
+                    <label>Is Trip Complete?</label>
+                    <input type="checkbox" checked onclick="return false">
+                }
+                else
+                {
+                    <label>Is Trip Complete?</label>
+                    <input type="checkbox" unchecked>
+                    <br />
+                    <a asp-controller="Update" asp-action="MarkTripComplete" asp-route-tripId="@trip.TripID">Mark Trip Complete</a>
+                }
+
+
+
+
+                
+            </li>
+            @foreach (var item in Model.Events)
+            {
+                if (item.ParentTripId == trip.TripID)
+                {
+                    <li>
+                        <h3>Events:</h3>
+                        <p>Venue Name: @item.name</p>
+                        <p>Event Address: @item.address </p>
+                        <p> Performer  : @item.performerName</p>
+                        <a asp-controller="Delete" asp-action="DeleteEvent" asp-route-seatGeekChildId="@item.SeatGeekChildId">Delete Event</a>
+
+                    </li>
+
+                }
+            }
+
+
+            @foreach (var business in Model.Businesses)
+            {
+                if (business.ParentTripId == trip.TripID)
+                {
+                    <li>
+                        <h3>Businesses:</h3>
+                        <p>Venue Address: @business.address1 @business.address2 @business.address3</p>
+                        <p>Business Name: @business.name </p>
+                        <p> Phone Number: @business.phoneNumber</p>
+                        <a asp-controller="Delete" asp-action="DeleteBusiness" asp-route-yelpChildId="@business.YelpChildId">Delete Business</a>
+                    </li>
+                }
+            }
+            <li><a asp-controller="Business" asp-action="BusinessFormResult" asp-route-city="@trip.City" asp-route-TripId="@trip.TripID">Add Business</a></li>
+
+
+        
+    }
 </ul>

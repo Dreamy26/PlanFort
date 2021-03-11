@@ -77,7 +77,7 @@ namespace PlanFort.Controllers
                 .ToList();
 
             viewModel.Businesses = yelpChildren
-               .Select(business => new BusinessChild() { address1 = business.address1, address2 = business.address2, address3 = business.address3, name = business.name, phoneNumber = business.phone, ParentTripId = business.ParentTripID})
+               .Select(business => new BusinessChild() { address1 = business.address1, address2 = business.address2, address3 = business.address3, name = business.name, phoneNumber = business.phone, ParentTripId = business.ParentTripID, YelpChildId = business.YelpChildId })
                .ToList();
 
             viewModel.Events = seatGeekChildren
