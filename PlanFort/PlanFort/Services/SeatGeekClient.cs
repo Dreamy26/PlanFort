@@ -54,7 +54,7 @@ namespace PlanFort.Services
             }
             else
             {
-                throw new HttpRequestException("Final Space API returned bad response");
+                throw new HttpRequestException("SeatGeek API returned bad response");
             }
         }
 
