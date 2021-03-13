@@ -10,5 +10,7 @@ namespace PlanFort.Models.ViewModels
         public string City { get; set; }
 
         public int TripID { get; set; }
+
+        public DateTime DateOfTrip { get; set; }
     }
 }
