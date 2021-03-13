@@ -11,5 +11,6 @@ namespace PlanFort.Models.ViewModels
         public IEnumerable<EventVM> Events { get; set; }
 
         public int TripID { get; set; }
+        public string DateOfTrip { get; set; }
     }
 }

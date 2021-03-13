@@ -31,9 +31,11 @@ namespace PlanFort.Controllers
             return View();
         }
 
-        public async Task<IActionResult> EventCityFormResult(TripCreatorViewModel model)
+        public async Task<IActionResult> EventCityFormResult(EventCityFormVM model)
         {
-            var response = await _seatGeekClient.GetEventByCity(model.City);
+            var nextDay = model.DateOfTrip.AddDays(1).ToString("yyyy-MM-dd");
+            var tripDate = model.DateOfTrip.ToString("yyyy-MM-dd");
+            var response = await _seatGeekClient.GetEventByCity(model.City, tripDate, nextDay);
 
             var viewModel = new EventCityFormResultVM();
             var results = response.events;
@@ -48,11 +50,14 @@ namespace PlanFort.Controllers
             eventHeader.UserId = _userManager.GetUserId(User);
 
             eventHeader.IsComplete = false;
+            eventHeader.DateOfTrip = tripDate;
 
             _planFortDBContext.TripParent.Add(eventHeader);
             _planFortDBContext.SaveChanges();
 
             viewModel.TripID = eventHeader.TripID;
+            viewModel.DateOfTrip = tripDate;
+            
                
 
 

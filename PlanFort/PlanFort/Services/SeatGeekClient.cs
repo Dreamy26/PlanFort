@@ -21,10 +21,10 @@ namespace PlanFort.Services
             return await GetAsync<EventsResponseModel>
                 ("/events?client_id= MjE1NjY1OTZ8MTYxNDY1MTAwMC41MDk3Mjk2");
         }
-        public async Task<EventsResponseModel> GetEventByCity(string city)
+        public async Task<EventsResponseModel> GetEventByCity(string city, string dateOfTrip, string nextDay)
         {
             return await GetAsync<EventsResponseModel>
-                ($"/events?venue.city={city}&client_id=MjE1NjY1OTZ8MTYxNDY1MTAwMC41MDk3Mjk2");
+                ($"/events?venue.city={city}&datetime_utc.gte={dateOfTrip}&datetime_utc.lte={nextDay}&client_id=MjE1NjY1OTZ8MTYxNDY1MTAwMC41MDk3Mjk2");
 
             //Calling SeatGeek API and searching events for certain cities
         }

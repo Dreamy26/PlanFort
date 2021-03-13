@@ -25,6 +25,7 @@ namespace PlanFort.Models.DALModels
 
         public IEnumerable<SeatGeekChildDAL> SeatGeekChildren { get; set; }
         public bool IsComplete { get; set; }
+        public string DateOfTrip { get; set; }
 
     }
 

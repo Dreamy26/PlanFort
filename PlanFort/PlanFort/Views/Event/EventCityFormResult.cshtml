@@ -5,6 +5,7 @@
     {
         <li>@e.Title</li>
         <li>@e.City</li>
+        <li>@Model.DateOfTrip</li>
 
 
         <li><a asp-controller="Event" asp-action="AddEvent" asp-route-id="@e.Id" asp-route-TripId=" @Model.TripID">Add Event</a></li>

@@ -11,6 +11,8 @@ namespace PlanFort.Models.DomainModels
         public string City { get; set; }
         public bool IsComplete { get; set; }
 
+        public string DateOfTrip { get; set; }
+
 
     }
 }
