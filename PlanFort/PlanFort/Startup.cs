@@ -57,7 +57,14 @@ namespace PlanFort
                 httpClient.DefaultRequestHeaders.Add
                 ("Authorization", "Bearer W3vRwSOPMcpBMhoJKscEEDbPuDpTBJI9hZl63oU5sXhCkMGR2OmWN8PFywOLoj0z93DRQjy2Ma4PQDMBbrEGJK_CEhkL9OFj_DqPwiGvs5_2V0R_9OvBYNLS9DxAYHYx");
 
-            });         
+            });
+            services.AddHttpClient<OpenWeatherClient>(httpClient =>
+            {// TODO need to add api key variable
+                httpClient.BaseAddress = new Uri("https://www.openweathermap.org/");
+                //httpClient.DefaultRequestHeaders.Add
+               //("Authorization", "Bearer 26a6a596dfa6ff3649d805a3cf7dbc34");
+
+            });
 
             services.AddControllersWithViews();
             services.AddRazorPages();

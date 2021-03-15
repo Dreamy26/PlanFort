@@ -6,9 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\**" />
     <Compile Remove="Models\DALModel\**" />
+    <Content Remove="Data\Migrations\**" />
     <Content Remove="Models\DALModel\**" />
+    <EmbeddedResource Remove="Data\Migrations\**" />
     <EmbeddedResource Remove="Models\DALModel\**" />
+    <None Remove="Data\Migrations\**" />
     <None Remove="Models\DALModel\**" />
   </ItemGroup>
 
@@ -27,9 +31,5 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\Migrations\" />
   </ItemGroup>
 </Project>

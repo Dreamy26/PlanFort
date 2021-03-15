@@ -16,13 +16,15 @@ namespace PlanFort.Controllers
     {
         private readonly SeatGeekClient _seatGeekClient;
         private readonly YelpClient _yelpClient;
+        private readonly OpenWeatherClient _openWeatherClient;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly PlanFortDBContext _planFortDBContext;
 
-        public EventController(SeatGeekClient seatGeekClient, YelpClient yelpClient, UserManager<IdentityUser> userManager, PlanFortDBContext planFortDBContext)//<< using dependency injection
+        public EventController(OpenWeatherClient openWeatherClient, SeatGeekClient seatGeekClient, YelpClient yelpClient, UserManager<IdentityUser> userManager, PlanFortDBContext planFortDBContext)//<< using dependency injection
         {
             _seatGeekClient = seatGeekClient;
             _yelpClient = yelpClient;
+            _openWeatherClient = openWeatherClient;
             _userManager = userManager;
             _planFortDBContext = planFortDBContext;
         }
@@ -78,6 +80,23 @@ namespace PlanFort.Controllers
             _planFortDBContext.SeatGeekChild.Add(eventChild);
             _planFortDBContext.SaveChanges();
             return RedirectToAction("ViewTrips", "Home");
+        }
+
+        public async Task<IActionResult> WeatherByCity(string city)
+        {
+            var response = await _openWeatherClient.GetWeatherByCity(city);
+            var weather = new WeatherVM();
+            var weatherDes = response.weather[0].description;
+            var weatherIcon = response.weather[0].icon;
+            var weatherTemp = response.main.temp;
+
+            weather.Name = response.name;
+            weather.Temp = weatherTemp;
+            weather.Description = weatherDes;
+            weather.Icon = weatherIcon;
+
+            return RedirectToAction("ViewTrips", "Home");
+
         }
     }
 }

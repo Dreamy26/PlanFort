@@ -85,7 +85,5 @@ namespace PlanFort.Controllers
             return RedirectToAction("ViewTrips", "Home");
         }
 
-
-
     }
 }
