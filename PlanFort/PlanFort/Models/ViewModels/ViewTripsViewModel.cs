@@ -12,5 +12,6 @@ namespace PlanFort.Models.ViewModels
         public List<TripHeader> Trips { get; set; }
         public List<EventChild> Events { get; set; }
         public List<BusinessChild> Businesses { get; set; }
+        public List<WeatherVM> Weather { get; set; }
     }
 }
