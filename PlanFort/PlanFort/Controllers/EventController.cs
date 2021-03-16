@@ -8,6 +8,7 @@ using PlanFort.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PlanFort.Controllers
@@ -33,45 +34,70 @@ namespace PlanFort.Controllers
 
         public async Task<IActionResult> EventCityFormResult(EventCityFormVM model)
         {
-            var nextDay = model.DateOfTrip.AddDays(1).ToString("yyyy-MM-dd");
+            //  date time field -- getting rid of time -- coverting to string 
             var tripDate = model.DateOfTrip.ToString("yyyy-MM-dd");
-            var response = await _seatGeekClient.GetEventByCity(model.City, tripDate, nextDay);
 
-            var viewModel = new EventCityFormResultVM();
-            var results = response.events;
+            //Date of event -- Only will accetp a valid date -- only accepting numeric date
+            Regex validDate = new Regex(@"^(([0][[0-9])|([1][0-2]))\-(([0-2][0-9])|([3][0-2]))\-[0-9]{4}$");
 
-            viewModel.Events = results
-                .Select(results => new EventVM()
-                { City = results.venue.city, Title = results.title, Id = results.id})
-                .ToList();
+            // Adding Validation for tripDate -- official date form accepted only!
+            if (validDate.IsMatch(tripDate))
+            {
 
-            var eventHeader = new TripParentDAL();
-            eventHeader.City = model.City;
-            eventHeader.UserId = _userManager.GetUserId(User);
+                // taking the date adding one day, then converting to a string. 
+                var nextDay = model.DateOfTrip.AddDays(1).ToString("yyyy-MM-dd");
 
-            eventHeader.IsComplete = false;
-            eventHeader.DateOfTrip = tripDate;
+                // this var contains all of the events for the date of the trip.
+                var response = await _seatGeekClient.GetEventByCity(model.City, tripDate, nextDay);
 
-            _planFortDBContext.TripParent.Add(eventHeader);
-            _planFortDBContext.SaveChanges();
+                // view model set up EventCityFormResultV
+                var viewModel = new EventCityFormResultVM();
+                var results = response.events;
 
-            viewModel.TripID = eventHeader.TripID;
-            viewModel.DateOfTrip = tripDate;
-            
-               
+                // mapping events from API response to the view model
+                viewModel.Events = results
+                    .Select(results => new EventVM()
+                    { City = results.venue.city, Title = results.title, Id = results.id })
+                    .ToList();
+
+                // mapping the trip to the TripParent table
+                var eventHeader = new TripParentDAL();
+                eventHeader.City = model.City;
+                eventHeader.UserId = _userManager.GetUserId(User);
+
+                eventHeader.IsComplete = false;
+                eventHeader.DateOfTrip = tripDate;
+
+                // saving trip parent data
+                _planFortDBContext.TripParent.Add(eventHeader);
+                _planFortDBContext.SaveChanges();
+
+                viewModel.TripID = eventHeader.TripID;
+                viewModel.DateOfTrip = tripDate;
 
 
-            return View(viewModel);
+                return View(viewModel);
+            }
+
+            else
+            {
+                // if date is not correct, action = EventCityForm
+                // TIPPPPPP -- Action comes first.. Then Controller -- END TIPPPP
+                return RedirectToAction("EventCityForm", "Event");
+            }
         }
       
-
+       
         public async Task<IActionResult> AddEvent(int id, int TripId )
         {
+            // Callin SeatGeek API & and returning one specific event 
             var response = await _seatGeekClient.GetEventByID(id);
             var eventChild = new SeatGeekChildDAL();
             var performer = response.events[0].performers;
             var venue = response.events[0].venue;
 
+            //  Maping the event to seatGeekChild table
+            //  then saving the SeatGeekChild data
             eventChild.ParentTripID = TripId;
             eventChild.performerName = performer[0].name;
             eventChild.performerType = performer[0].type;
@@ -80,6 +106,8 @@ namespace PlanFort.Controllers
             eventChild.ParentTripID = TripId;
             eventChild.address = venue.address;
             eventChild.name = venue.name;
+
+
             _planFortDBContext.SeatGeekChild.Add(eventChild);
             _planFortDBContext.SaveChanges();
             return RedirectToAction("ViewTrips", "Home");
