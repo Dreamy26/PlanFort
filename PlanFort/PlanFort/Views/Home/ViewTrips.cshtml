@@ -12,29 +12,38 @@
     @foreach (var trip in Model.Trips)
     {
         
-            <li>
-                <h1>Trip:</h1>
-                <H2>city: @trip.City</H2> 
-                <h2>Date of Trip: @trip.DateOfTrip</h2>
-                <a asp-controller="Delete" asp-action="DeleteTrip" asp-route-tripId="@trip.TripID">Delete Trip</a>
-                @if (trip.IsComplete == true)
-                {
-                    <label>Is Trip Complete?</label>
-                    <input type="checkbox" checked onclick="return false">
-                }
-                else
-                {
-                    <label>Is Trip Complete?</label>
-                    <input type="checkbox" unchecked>
-                    <br />
-                    <a asp-controller="Update" asp-action="MarkTripComplete" asp-route-tripId="@trip.TripID">Mark Trip Complete</a>
-                }
+    <li>
+        <h1>Trip:</h1>
+        <H2>city: @trip.City</H2>
+        <h2>Date of Trip: @trip.DateOfTrip</h2>
+        @foreach (var city in Model.Weather)
+        {
+            if (city.Name == trip.City)
+            {
+                <h3>Weather: @city.Temp Degrees</h3>
+                <h3>Condition: @city.Description</h3>
+                break;
+            }
+        }
+        <a asp-controller="Delete" asp-action="DeleteTrip" asp-route-tripId="@trip.TripID">Delete Trip</a>
+        @if (trip.IsComplete == true)
+        {
+            <label>Is Trip Complete?</label>
+            <input type="checkbox" checked onclick="return false">
+        }
+        else
+        {
+            <label>Is Trip Complete?</label>
+            <input type="checkbox" unchecked>
+            <br />
+            <a asp-controller="Update" asp-action="MarkTripComplete" asp-route-tripId="@trip.TripID">Mark Trip Complete</a>
+        }
 
 
 
 
-                
-            </li>
+
+    </li>
             @foreach (var item in Model.Events)
             {
                 if (item.ParentTripId == trip.TripID)
