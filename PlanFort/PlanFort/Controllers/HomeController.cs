@@ -21,12 +21,15 @@ namespace PlanFort.Controllers
         private readonly SeatGeekClient _seatGeekClient;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly PlanFortDBContext _planFortDBContext;
-        public HomeController(ILogger<HomeController> logger, SeatGeekClient seatGeekClient, UserManager<IdentityUser> userManager, PlanFortDBContext planFortDBContext)
+        private readonly OpenWeatherClient _openWeatherClient;
+
+        public HomeController(OpenWeatherClient openWeatherClient, ILogger<HomeController> logger, SeatGeekClient seatGeekClient, UserManager<IdentityUser> userManager, PlanFortDBContext planFortDBContext)
         {
             _logger = logger;
             _seatGeekClient = seatGeekClient;
             _userManager = userManager;
             _planFortDBContext = planFortDBContext;
+            _openWeatherClient = openWeatherClient;
         }
 
         public IActionResult Index()
@@ -54,7 +57,7 @@ namespace PlanFort.Controllers
         }
 
         [Authorize]
-        public IActionResult ViewTrips()
+        public async Task<IActionResult> ViewTrips()
         {
             var userID = _userManager.GetUserId(User);
             var eventHeaders = _planFortDBContext.TripParent
@@ -73,7 +76,7 @@ namespace PlanFort.Controllers
 
             var viewModel = new ViewTripsViewModel();
             viewModel.Trips = eventHeaders
-                .Select(trip => new TripHeader() { City = trip.City, TripID = trip.TripID, IsComplete = trip.IsComplete})
+                .Select(trip => new TripHeader() { City = trip.City, TripID = trip.TripID, IsComplete = trip.IsComplete })
                 .ToList();
 
             viewModel.Businesses = yelpChildren
@@ -84,8 +87,22 @@ namespace PlanFort.Controllers
                .Select(item => new EventChild() { name = item.name, address = item.address, city = item.city, performerName = item.performerName, performerType = item.performerType, id = item.id, ParentTripId = item.ParentTripID, SeatGeekChildId = item.SeatGeekChildId })
                .ToList();
 
+            viewModel.Weather = new List<WeatherVM>();
+
+            foreach (var trip in viewModel.Trips)
+            {
+                var response = await _openWeatherClient.GetWeather(trip.City);
+                var weather = new WeatherVM();
+                weather.Description = response.weather[0].description;
+                weather.Icon = response.weather[0].icon;
+                weather.Temp = response.main.temp;
+
+                weather.Name = response.name;
+                viewModel.Weather.Add(weather);
+            }
+
             return View(viewModel);
         }
-            
+
     }
 }

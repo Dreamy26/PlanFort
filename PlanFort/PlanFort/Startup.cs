@@ -60,9 +60,7 @@ namespace PlanFort
             });
             services.AddHttpClient<OpenWeatherClient>(httpClient =>
             {// TODO need to add api key variable
-                httpClient.BaseAddress = new Uri("https://www.openweathermap.org/");
-                //httpClient.DefaultRequestHeaders.Add
-               //("Authorization", "Bearer 26a6a596dfa6ff3649d805a3cf7dbc34");
+                httpClient.BaseAddress = new Uri("https://api.openweathermap.org/");
 
             });
 

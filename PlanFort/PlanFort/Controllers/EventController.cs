@@ -82,21 +82,5 @@ namespace PlanFort.Controllers
             return RedirectToAction("ViewTrips", "Home");
         }
 
-        public async Task<IActionResult> WeatherByCity(string city)
-        {
-            var response = await _openWeatherClient.GetWeatherByCity(city);
-            var weather = new WeatherVM();
-            var weatherDes = response.weather[0].description;
-            var weatherIcon = response.weather[0].icon;
-            var weatherTemp = response.main.temp;
-
-            weather.Name = response.name;
-            weather.Temp = weatherTemp;
-            weather.Description = weatherDes;
-            weather.Icon = weatherIcon;
-
-            return RedirectToAction("ViewTrips", "Home");
-
-        }
     }
 }

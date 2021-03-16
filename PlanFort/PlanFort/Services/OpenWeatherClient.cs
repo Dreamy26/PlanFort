@@ -16,9 +16,14 @@ namespace PlanFort.Services
         {
             _openWeatherClient = openWeatherClient;
         }
-        public async Task<WeatherResponseModel> GetWeatherByCity(string city)
+        //public double GetTempByCity(string city)
+        //{
+        //    var weather = GetWeather(city);
+        //    var temp = weather;
+        //}
+        public async Task<WeatherResponseModel> GetWeather(string city)
         {
-            var response = await _openWeatherClient.GetAsync($"data/2.5/weather?q={city}&appid=");
+            var response = await _openWeatherClient.GetAsync($"data/2.5/weather?q={city}&units=imperial&appid=26a6a596dfa6ff3649d805a3cf7dbc34");
 
             if (response.IsSuccessStatusCode)
             {
