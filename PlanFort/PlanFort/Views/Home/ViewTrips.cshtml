@@ -18,7 +18,7 @@
         <h2>Date of Trip: @trip.DateOfTrip</h2>
         @foreach (var city in Model.Weather)
         {
-            if (city.Name == trip.City)
+            if (city.Name.ToLower() == trip.City.ToLower())
             {
                 <h3>Weather: @city.Temp Degrees</h3>
                 <h3>Condition: @city.Description</h3>

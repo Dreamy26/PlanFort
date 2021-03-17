@@ -1,4 +1,5 @@
-﻿using PlanFort.Models.SeatGeekAPIModel;
+﻿using Microsoft.Extensions.Configuration;
+using PlanFort.Models.SeatGeekAPIModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +13,29 @@ namespace PlanFort.Services
     {
         private readonly HttpClient _client;
 
-        public SeatGeekClient(HttpClient client)
+        public SeatGeekClient(HttpClient client, IConfiguration configuration)
         {
             _client = client;
+            Configuration = configuration;
         }
+
+        public IConfiguration Configuration { get; }
+
+
+
         public async Task<EventsResponseModel> GetAllEvents()
         {
+            var clientID = Configuration.GetSection("SeatGeek:ClientID").Value;
+
             return await GetAsync<EventsResponseModel>
-                ("/events?client_id= MjE1NjY1OTZ8MTYxNDY1MTAwMC41MDk3Mjk2");
+                ($"/events?client_id={clientID}");
         }
         public async Task<EventsResponseModel> GetEventByCity(string city, string dateOfTrip, string nextDay)
         {
+            var clientID = Configuration.GetSection("SeatGeek:ClientID").Value;
+
             return await GetAsync<EventsResponseModel>
-                ($"/events?venue.city={city}&datetime_utc.gte={dateOfTrip}&datetime_utc.lte={nextDay}&client_id=MjE1NjY1OTZ8MTYxNDY1MTAwMC41MDk3Mjk2");
+                ($"/events?venue.city={city}&datetime_utc.gte={dateOfTrip}&datetime_utc.lte={nextDay}&client_id={clientID}");
 
             //Calling SeatGeek API and searching events for certain cities
         }
