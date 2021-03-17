@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PlanFort.Data;
 using PlanFort.Models.DALModels;
@@ -27,18 +28,22 @@ namespace PlanFort.Controllers
             _userManager = userManager;
             _planFortDBContext = planFortDBContext;
         }
+
+        [Authorize]
         public IActionResult EventCityForm()
         {
             return View();
         }
 
+        [Authorize]
         public async Task<IActionResult> EventCityFormResult(EventCityFormVM model)
         {
             //  date time field -- getting rid of time -- coverting to string 
             var tripDate = model.DateOfTrip.ToString("yyyy-MM-dd");
 
             //Date of event -- Only will accetp a valid date -- only accepting numeric date
-            Regex validDate = new Regex(@"^(([0][[0-9])|([1][0-2]))\-(([0-2][0-9])|([3][0-2]))\-[0-9]{4}$");
+            Regex validDate = new Regex(@"^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$");
+
 
             // Adding Validation for tripDate -- official date form accepted only!
             if (validDate.IsMatch(tripDate))

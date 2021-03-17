@@ -52,10 +52,11 @@ namespace PlanFort
             });
             services.AddHttpClient<YelpClient>(httpClient =>
             {
+                var yelpBearer = Configuration.GetSection("Yelp:Bearer").Value; 
           
                 httpClient.BaseAddress = new Uri("https://api.yelp.com/v3/");
                 httpClient.DefaultRequestHeaders.Add
-                ("Authorization", "Bearer W3vRwSOPMcpBMhoJKscEEDbPuDpTBJI9hZl63oU5sXhCkMGR2OmWN8PFywOLoj0z93DRQjy2Ma4PQDMBbrEGJK_CEhkL9OFj_DqPwiGvs5_2V0R_9OvBYNLS9DxAYHYx");
+                ("Authorization", yelpBearer);
 
             });
             services.AddHttpClient<OpenWeatherClient>(httpClient =>

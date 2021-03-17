@@ -76,7 +76,7 @@ namespace PlanFort.Controllers
 
             var viewModel = new ViewTripsViewModel();
             viewModel.Trips = eventHeaders
-                .Select(trip => new TripHeader() { City = trip.City, TripID = trip.TripID, IsComplete = trip.IsComplete, DateOfTrip = trip.DateOfTrip })
+                .Select(trip => new TripHeader() { City = trip.City.ToUpper(), TripID = trip.TripID, IsComplete = trip.IsComplete, DateOfTrip = trip.DateOfTrip })
                 .ToList();
 
             viewModel.Businesses = yelpChildren
@@ -95,7 +95,7 @@ namespace PlanFort.Controllers
                 var weather = new WeatherVM();
                 weather.Description = response.weather[0].description;
                 weather.Icon = response.weather[0].icon;
-                weather.Temp = response.main.temp;
+                weather.Temp = (int) response.main.temp;
 
                 weather.Name = response.name;
                 viewModel.Weather.Add(weather);
