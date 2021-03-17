@@ -13,19 +13,19 @@
     {
 
         <li class="list-group-item">
-            <h1>Trip:</h1>
-            <H2>city: @trip.City</H2>
-            <h2>Date of Trip: @trip.DateOfTrip</h2>
+            <h5>Trip:</h5>
+            <h6>city: @trip.City</h6>
+            <h6>Date of Trip: @trip.DateOfTrip</h6>
             @foreach (var city in Model.Weather)
             {
                 if (city.Name == trip.City)
                 {
-                    <h3>Weather: @city.Temp Degrees</h3>
-                    <h3>Condition: @city.Description</h3>
+                    <h6>Weather: @city.Temp Degrees</h6>
+                    <h6>Condition: @city.Description</h6>
                     break;
                 }
             }
-            <button asp-controller="Delete" asp-action="DeleteTrip" asp-route-tripId="@trip.TripID">Delete Trip</button>
+            <button type="button" class="btn btn-outline-danger" asp-controller="Delete" asp-action="DeleteTrip" asp-route-tripId="@trip.TripID">Delete Trip</button>
             @if (trip.IsComplete == true)
             {
                 <label>Is Trip Complete?</label>
@@ -36,18 +36,18 @@
                 <label>Is Trip Complete?</label>
                 <input type="checkbox" unchecked>
                 <br />
-                <button asp-controller="Update" asp-action="MarkTripComplete" asp-route-tripId="@trip.TripID">Mark Trip Complete</button>
+                <button type="button" class="btn btn-outline-success" asp-controller="Update" asp-action="MarkTripComplete" asp-route-tripId="@trip.TripID">Mark Trip Complete</button>
             }
             @foreach (var item in Model.Events)
             {
                 if (item.ParentTripId == trip.TripID)
                 {
 
-                    <h3>Events:</h3>
+                    <h6>Events:</h6>
                     <p>Venue Name: @item.name</p>
                     <p>Event Address: @item.address </p>
                     <p> Performer  : @item.performerName</p>
-                    <button asp-controller="Delete" asp-action="DeleteEvent" asp-route-seatGeekChildId="@item.SeatGeekChildId">Delete Event</button>
+                    <button type="button" class="btn btn-outline-danger" asp-controller="Delete" asp-action="DeleteEvent" asp-route-seatGeekChildId="@item.SeatGeekChildId">Delete Event</button>
 
                 }
             }
@@ -58,15 +58,15 @@
                 if (business.ParentTripId == trip.TripID)
                 {
 
-                    <h3>Businesses:</h3>
+                    <h6>Businesses:</h6>
                     <p>Venue Address: @business.address1 @business.address2 @business.address3</p>
                     <p>Business Name: @business.name </p>
                     <p> Phone Number: @business.phoneNumber</p>
-                    <button asp-controller="Delete" asp-action="DeleteBusiness" asp-route-yelpChildId="@business.YelpChildId">Delete Business</button>
+                    <button type="button" class="btn btn-outline-danger" asp-controller="Delete" asp-action="DeleteBusiness" asp-route-yelpChildId="@business.YelpChildId">Delete Business</button>
 
                 }
             }
-            <button asp-controller="Business" asp-action="BusinessFormResult" asp-route-city="@trip.City" asp-route-TripId="@trip.TripID">Add Business</button>
+            <button type="button" class="btn btn-outline-success" asp-controller="Business" asp-action="BusinessFormResult" asp-route-city="@trip.City" asp-route-TripId="@trip.TripID">Add Business</button>
         </li>
 
     }
