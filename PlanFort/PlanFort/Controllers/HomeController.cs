@@ -87,21 +87,25 @@ namespace PlanFort.Controllers
                .Select(item => new EventChild() { name = item.name, address = item.address, city = item.city, performerName = item.performerName, performerType = item.performerType, id = item.id, ParentTripId = item.ParentTripID, SeatGeekChildId = item.SeatGeekChildId })
                .ToList();
 
-            viewModel.Weather = new List<WeatherVM>();
+            var weatherForCityTasks = viewModel.Trips.Select(trip => GetWeatherForCity(trip.City));
 
-            foreach (var trip in viewModel.Trips)
-            {
-                var response = await _openWeatherClient.GetWeather(trip.City);
-                var weather = new WeatherVM();
-                weather.Description = response.weather[0].description;
-                weather.Icon = response.weather[0].icon;
-                weather.Temp = (int) response.main.temp;
-
-                weather.Name = response.name;
-                viewModel.Weather.Add(weather);
-            }
+            viewModel.Weather = (await Task.WhenAll(weatherForCityTasks)).ToList();            
 
             return View(viewModel);
+        }
+
+
+
+        public async Task<WeatherVM> GetWeatherForCity(string cityName)
+        {
+            var response = await _openWeatherClient.GetWeather(cityName);
+            var weather = new WeatherVM();
+            weather.Description = response.weather[0].description;
+            weather.Icon = response.weather[0].icon;
+            weather.Temp = (int)response.main.temp;
+
+            weather.Name = response.name;
+            return weather;
         }
 
     }
