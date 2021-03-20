@@ -1,15 +1,26 @@
 ﻿@model PlanFort.Models.ViewModels.EventCityFormResultVM
 
-<ul>
-    @foreach (var e in Model.Events)
-    {
-        <li>@e.Title</li>
-        <li>@e.City</li>
-        <li>@Model.DateOfTrip</li>
+
+@foreach (var e in Model.Events)
+{
+    <div class="card" style="width: 18rem">
+        <div class="card-body">
+            <p class="font-weight-bold">Event Title</p>
+            <p class="card-text">@e.Title</p>
+            <p class="font-weight-bold">Event City</p>
+            <p class="card-text">@e.City</p>
+            <p class="font-weight-bold">Venue Name</p>
+            <p class="card-text">@e.VenueName</p>
+            <p class="font-weight-bold">Date</p>
+            <p class="card-text">@Model.DateOfTrip</p>
 
 
-        <li><a asp-controller="Event" asp-action="AddEvent" asp-route-id="@e.Id" asp-route-TripId=" @Model.TripID">Add Event</a></li>
-  
-    }
 
-</ul>
+            <a asp-controller="Event" asp-action="AddEvent" asp-route-id="@e.Id" asp-route-TripId=" @Model.TripID">Add Event</a>
+
+        </div>
+
+
+
+    </div>
+}

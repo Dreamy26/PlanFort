@@ -13,6 +13,10 @@ namespace PlanFort.Models.DomainModels
 
         public string id { get; set; }
 
-        public int yelpChildId { get; set; }    
+        public int yelpChildId { get; set; }
+
+        public string address { get; set; }
+
+        public string City { get; set; }
     }
 }

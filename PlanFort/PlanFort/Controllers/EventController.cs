@@ -62,7 +62,7 @@ namespace PlanFort.Controllers
                 // mapping events from API response to the view model
                 viewModel.Events = results
                     .Select(results => new EventVM()
-                    { City = results.venue.city, Title = results.title, Id = results.id })
+                    { City = results.venue.city, Title = results.title, Id = results.id, VenueName = results.venue.name })
                     .ToList();
 
                 // mapping the trip to the TripParent table

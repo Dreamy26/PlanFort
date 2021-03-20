@@ -37,7 +37,7 @@ namespace PlanFort.Services
             }
             else
             {
-                throw new HttpRequestException("Open Weather API bad resposne");
+                throw new HttpRequestException("Open Weather API bad response");
             }
         }
     }

@@ -10,7 +10,8 @@ namespace PlanFort.Models.DomainModels
         public string Title { get; set; }
         public string City { get; set; }
         public int Id { get; set; }
-        public int SeatGeekChildID { get; set; }
+      
+        public string VenueName { get; set; }
 
     }
 }

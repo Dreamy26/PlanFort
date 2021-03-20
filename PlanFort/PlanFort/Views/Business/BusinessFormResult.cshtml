@@ -2,12 +2,19 @@
 
 @model PlanFort.Models.ViewModels.BusinessFormResultVM
 
-<ul>
+<div>
     @foreach (var business in Model.Businesses)
     {
-        <li>@business.Name</li>
-        <li>@business.title</li>
-        <li><a asp-controller="Business" asp-action="AddBusiness" asp-route-id="@business.id" asp-route-TripId="@Model.TripID">Add Business</a></li>
-
+        <div class="card" style="width: 18rem">
+            <div class="card-body">
+                <p class="font-weight-bold">Business Name</p>
+                <p class="card-text">@business.Name</p>
+                <p class="font-weight-bold">Address</p>
+                <p class="card-text">@business.address</p>
+                <p class="font-weight-bold">City</p>
+                <p class="card-text">@business.City</p>
+                <a asp-controller="Business" asp-action="AddBusiness" asp-route-id="@business.id" asp-route-TripId="@Model.TripID">Add Business</a>
+            </div>
+        </div>
     }
-</ul>
+</div>
