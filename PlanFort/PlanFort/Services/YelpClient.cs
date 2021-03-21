@@ -17,10 +17,10 @@ namespace PlanFort.Services
         {
             _yelpClient = yelpClient;
         }
-        public async Task<BusinessResponseModel> GetBusinessByCity(string city, string business)
+        public async Task<BusinessResponseModel> GetBusinessByCity(string city, string businessType)
         {
             return await GetAsync<BusinessResponseModel>
-                ($"businesses/search?location={city}&categories={business}");
+                ($"businesses/search?location={city}&categories={businessType}&limit=50");
         }
         public async Task<BusinessResponseModel> GetBusinessByCity(string city)
         {

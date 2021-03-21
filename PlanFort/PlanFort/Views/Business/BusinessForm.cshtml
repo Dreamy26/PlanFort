@@ -1,12 +1,43 @@
 ﻿@model PlanFort.Models.ViewModels.BusinessFormVM
-<form asp-controller="Event" asp-action="BusinessFormResult" method="post">
 
-    <label asp-for="City"></label>
-    <input asp-for="City" />
 
-    <label asp-for="Category"></label>
-    <input asp-for="Category" />
+
+<form asp-controller="Business" asp-action="BusinessFormResult" asp-route-TripID="@Model.TripID" asp-route-City="@Model.City" asp-route-Category="@Model.Category" method="post">
+
+
+    <label asp-for="Category">Choose a Business Type:</label>
+
+    <select asp-for="Category" name="Category">
+        <option value="bars">Bars</option>
+        <option value="active">Active</option>
+        <option value="arts">Arts</option>
+        <option value="auto">Auto</option>
+        <option value="beautysvc">Beauty Services</option>
+        <option value="bicycles">Bicycles</option>
+        <option value="education">Education</option>
+        <option value="eventservices">Event Services</option>
+        <option value="financialservices">Financial Services</option>
+        <option value="food">Food</option>
+        <option value="health">Health</option>
+        <option value="homeservices">Home Services</option>
+        <option value="hotelstravel">Hotels and Travel</option>
+        <option value="localflavor">Local Flavor</option>
+        <option value="localservices">Local Services</option>
+        <option value="massmedia">Mass Media</option>
+        <option value="nightlife">Nightlife</option>
+        <option value="pets">Pets</option>
+        <option value="professional">Professional</option>
+        <option value="publicservicesgovt">Public Services and Govt</option>
+        <option value="realestate">Real Estate</option>
+        <option value="religiousorgs">Religious Orgs</option>
+        <option value="restaurants">Restaurants</option>
+        <option value="shopping">Shopping</option>
+
+    </select>
 
     <button>Search</button>
+
+
+    
 
 </form>
