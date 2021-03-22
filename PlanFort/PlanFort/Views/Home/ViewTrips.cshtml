@@ -27,7 +27,7 @@
                         break;
                     }
                 }
-                <a class="text-danger" asp-controller="Delete" asp-action="DeleteTrip" asp-route-tripId="@trip.TripID">Delete Trip</a>
+                <a class="text-danger" asp-controller="Home" asp-action="DeleteTrip" asp-route-tripId="@trip.TripID">Delete Trip</a>
                 @if (trip.IsComplete == true)
                 {
                     <label>Is Trip Complete?</label>
@@ -61,7 +61,7 @@
                             <p class="font-weight-bold">Venue Name:</p> <p> @item.name</p>
                             <p class="font-weight-bold">Event Address:</p> <p> @item.address </p>
                             <p class="font-weight-bold"> Performer:</p> <p> @item.performerName</p>
-                            <a class="text-danger" asp-controller="Delete" asp-action="DeleteEvent" asp-route-seatGeekChildId="@item.SeatGeekChildId">Delete Event</a>
+                            <a class="text-danger" asp-controller="Event" asp-action="DeleteEvent" asp-route-seatGeekChildId="@item.SeatGeekChildId">Delete Event</a>
 
 
 
@@ -78,7 +78,7 @@
                                 <p class="font-weight-bold">Business Name:</p> <p> @business.name </p>
                                 <p class="font-weight-bold">Business Address:</p> <p> @business.address1 @business.address2 @business.address3</p>
                                 <p class="font-weight-bold"> Phone Number:</p> <p> @business.phoneNumber</p>
-                                <a class="text-danger" asp-controller="Delete" asp-action="DeleteBusiness" asp-route-yelpChildId="@business.YelpChildId">Delete Business</a>
+                                <a class="text-danger" asp-controller="Business" asp-action="DeleteBusiness" asp-route-yelpChildId="@business.YelpChildId">Delete Business</a>
                             </div>
                         }
                     }
