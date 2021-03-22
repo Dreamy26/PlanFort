@@ -122,6 +122,20 @@ namespace PlanFort.Controllers
 
         }
 
+        // Delete trip
+        public IActionResult DeleteTrip(int tripId)
+        {
+            TripParentDAL tripDAL = _planFortDBContext.TripParent
+                .Where(trip => trip.TripID == tripId)
+                .FirstOrDefault();
+
+            _planFortDBContext.Remove(tripDAL);
+            _planFortDBContext.SaveChanges();
+
+            return RedirectToAction("ViewTrips", "Home");
+
+        }
+
     }
 
 }

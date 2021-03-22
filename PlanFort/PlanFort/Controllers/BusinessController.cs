@@ -88,8 +88,19 @@ namespace PlanFort.Controllers
             
             return RedirectToAction("ViewTrips", "Home");
         }
+        // Delete a business 
+        public IActionResult DeleteBusiness(int YelpChildId)
+        {
+            //varible names are lowercase 
+            YelpChildDAL businessDAL = _planFortDBContext.YelpChild
+                .Where(business => business.YelpChildId == YelpChildId)
+                .FirstOrDefault();
 
+            _planFortDBContext.Remove(businessDAL);
+            _planFortDBContext.SaveChanges();
 
+            return RedirectToAction("ViewTrips", "Home");
 
+        }
     }
 }

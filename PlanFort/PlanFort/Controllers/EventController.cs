@@ -117,5 +117,18 @@ namespace PlanFort.Controllers
             _planFortDBContext.SaveChanges();
             return RedirectToAction("ViewTrips", "Home");
         }
+        // used naming from DALModels: int seatGeekChildId chg to lowercase
+        public IActionResult DeleteEvent(int seatGeekChildId)
+        {
+            SeatGeekChildDAL eventDAL = _planFortDBContext.SeatGeekChild
+                .Where(item => item.SeatGeekChildId == seatGeekChildId)
+                .FirstOrDefault();
+
+            _planFortDBContext.Remove(eventDAL);
+            _planFortDBContext.SaveChanges();
+
+            return RedirectToAction("ViewTrips", "Home");
+
+        }
     }
 }
