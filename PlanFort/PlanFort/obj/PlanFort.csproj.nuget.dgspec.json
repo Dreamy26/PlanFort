@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dylan\\OneDrive\\Documents\\GrandCircus\\Final Project\\PlanFort\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj": {}
+    "C:\\Users\\there\\Downloads\\Grand Circus\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dylan\\OneDrive\\Documents\\GrandCircus\\Final Project\\PlanFort\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj": {
+    "C:\\Users\\there\\Downloads\\Grand Circus\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dylan\\OneDrive\\Documents\\GrandCircus\\Final Project\\PlanFort\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj",
+        "projectUniqueName": "C:\\Users\\there\\Downloads\\Grand Circus\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj",
         "projectName": "PlanFort",
-        "projectPath": "C:\\Users\\dylan\\OneDrive\\Documents\\GrandCircus\\Final Project\\PlanFort\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj",
-        "packagesPath": "C:\\Users\\dylan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dylan\\OneDrive\\Documents\\GrandCircus\\Final Project\\PlanFort\\PlanFort\\PlanFort\\PlanFort\\obj\\",
+        "projectPath": "C:\\Users\\there\\Downloads\\Grand Circus\\PlanFort\\PlanFort\\PlanFort\\PlanFort.csproj",
+        "packagesPath": "C:\\Users\\there\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\there\\Downloads\\Grand Circus\\PlanFort\\PlanFort\\PlanFort\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\dylan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\there\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -89,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
