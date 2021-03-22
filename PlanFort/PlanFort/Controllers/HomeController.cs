@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PlanFort.Data;
 using PlanFort.Models;
+using PlanFort.Models.DALModels;
 using PlanFort.Models.DomainModels;
 using PlanFort.Models.ViewModels;
 using PlanFort.Services;
@@ -106,6 +107,19 @@ namespace PlanFort.Controllers
 
             weather.Name = response.name;
             return weather;
+        }
+
+        public IActionResult MarkTripComplete(int tripId)
+        {
+            TripParentDAL tripDAL = _planFortDBContext.TripParent
+                .Where(trip => trip.TripID == tripId)
+                .FirstOrDefault();
+            tripDAL.IsComplete = true;
+            _planFortDBContext.Update(tripDAL);
+            _planFortDBContext.SaveChanges();
+
+            return RedirectToAction("ViewTrips", "Home");
+
         }
 
     }
