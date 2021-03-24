@@ -38,34 +38,34 @@ namespace PlanFort.Controllers
         [Authorize]
         public async Task<IActionResult> EventCityFormResult(EventCityFormVM model)
         {
-            //  date time field -- getting rid of time -- coverting to string 
+            
             var tripDate = model.DateOfTrip.ToString("yyyy-MM-dd");
 
-            //Date of event -- Only will accetp a valid date -- only accepting numeric date
+            
             Regex validDate = new Regex(@"^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$");
 
 
-            // Adding Validation for tripDate -- official date form accepted only!
+            
             if (validDate.IsMatch(tripDate))
             {
 
-                // taking the date adding one day, then converting to a string. 
+                 
                 var nextDay = model.DateOfTrip.AddDays(1).ToString("yyyy-MM-dd");
 
-                // this var contains all of the events for the date of the trip.
+                
                 var response = await _seatGeekClient.GetEventByCity(model.City, tripDate, nextDay);
 
-                // view model set up EventCityFormResultV
+                
                 var viewModel = new EventCityFormResultVM();
                 var results = response.events;
 
-                // mapping events from API response to the view model
+                
                 viewModel.Events = results
                     .Select(results => new EventVM()
                     { City = results.venue.city, Title = results.title, Id = results.id, VenueName = results.venue.name })
                     .ToList();
 
-                // mapping the trip to the TripParent table
+               
                 var eventHeader = new TripParentDAL();
                 eventHeader.City = model.City;
                 eventHeader.UserId = _userManager.GetUserId(User);
@@ -73,7 +73,7 @@ namespace PlanFort.Controllers
                 eventHeader.IsComplete = false;
                 eventHeader.DateOfTrip = tripDate;
 
-                // saving trip parent data
+               
                 _planFortDBContext.TripParent.Add(eventHeader);
                 _planFortDBContext.SaveChanges();
 
@@ -86,8 +86,7 @@ namespace PlanFort.Controllers
 
             else
             {
-                // if date is not correct, action = EventCityForm
-                // TIPPPPPP -- Action comes first.. Then Controller -- END TIPPPP
+           
                 return RedirectToAction("EventCityForm", "Event");
             }
         }
@@ -95,14 +94,13 @@ namespace PlanFort.Controllers
        
         public async Task<IActionResult> AddEvent(int id, int TripId )
         {
-            // Callin SeatGeek API & and returning one specific event 
+           
             var response = await _seatGeekClient.GetEventByID(id);
             var eventChild = new SeatGeekChildDAL();
             var performer = response.events[0].performers;
             var venue = response.events[0].venue;
 
-            //  Maping the event to seatGeekChild table
-            //  then saving the SeatGeekChild data
+            
             eventChild.ParentTripID = TripId;
             eventChild.performerName = performer[0].name;
             eventChild.performerType = performer[0].type;
@@ -117,7 +115,7 @@ namespace PlanFort.Controllers
             _planFortDBContext.SaveChanges();
             return RedirectToAction("ViewTrips", "Home");
         }
-        // used naming from DALModels: int seatGeekChildId chg to lowercase
+        
         public IActionResult DeleteEvent(int seatGeekChildId)
         {
             SeatGeekChildDAL eventDAL = _planFortDBContext.SeatGeekChild

@@ -6,92 +6,97 @@
 
 @model PlanFort.Models.ViewModels.ViewTripsViewModel
 
+<body style="background-color:black">
+    <center>
+        <div>
 
-<div>
+            @foreach (var trip in Model.Trips)
+            {
 
-    @foreach (var trip in Model.Trips)
-    {
+                <div class="card" style="width: 18rem;">
 
-        <div class="card" style="width: 18rem;">
+                    <div class="card-body">
 
-            <div class="card-body">
-
-                <h5 class="card-title">City: @trip.City</h5>
-                <h6 class="card-text">Date: @trip.DateOfTrip</h6>
-                @foreach (var city in Model.Weather)
-                {
-                    if (city.Name.ToLower() == trip.City.ToLower())
-                    {
-                        <p class="card-text">Current Weather: @city.Temp Degrees</p>
-                        <p>Condition: @city.Description </p>
-                        break;
-                    }
-                }
-                <a class="text-danger" asp-controller="Home" asp-action="DeleteTrip" asp-route-tripId="@trip.TripID">Delete Trip</a>
-                @if (trip.IsComplete == true)
-                {
-                    <label>Is Trip Complete?</label>
-                    <input type="checkbox" checked onclick="return false">
-                    <br />
-                    <br />
-                }
-                else
-                {
-                    <label>Is Trip Complete?</label>
-                    <input type="checkbox" unchecked>
-                    <br />
-                    <a asp-controller="Home" asp-action="MarkTripComplete" asp-route-tripId="@trip.TripID">Mark Trip Complete</a>
-                }
-
-                <br />
-                <br />
-                <br />
-
-
-
-
-
-                <div class="card-body" style="width: 18rem;">
-                    @foreach (var item in Model.Events)
-                    {
-                        if (item.ParentTripId == trip.TripID)
+                        <h5 style="color:dodgerblue" class="card-title">City: @trip.City</h5>
+                        <h6 class="card-text">Date: @trip.DateOfTrip</h6>
+                        @foreach (var city in Model.Weather)
                         {
-
-                            <h3>Events:</h3>
-                            <p class="font-weight-bold">Venue Name:</p> <p> @item.name</p>
-                            <p class="font-weight-bold">Event Address:</p> <p> @item.address </p>
-                            <p class="font-weight-bold"> Performer:</p> <p> @item.performerName</p>
-                            <a class="text-danger" asp-controller="Event" asp-action="DeleteEvent" asp-route-seatGeekChildId="@item.SeatGeekChildId">Delete Event</a>
-
-
-
+                            if (city.Name.ToLower() == trip.City.ToLower())
+                            {
+                                <p class="card-text">Current Weather: @city.Temp Degrees</p>
+                                <p class="card-text">Condition: @city.Description </p>
+                                break;
+                            }
                         }
-                    }
-
-
-                    @foreach (var business in Model.Businesses)
-                    {
-                        if (business.ParentTripId == trip.TripID)
+                        <a class="text-danger" asp-controller="Home" asp-action="DeleteTrip" asp-route-tripId="@trip.TripID">Delete Trip</a>
+                        @if (trip.IsComplete == true)
                         {
-                            <div>
-                                <h3>Businesses:</h3>
-                                <p class="font-weight-bold">Business Name:</p> <p> @business.name </p>
-                                <p class="font-weight-bold">Business Address:</p> <p> @business.address1 @business.address2 @business.address3</p>
-                                <p class="font-weight-bold"> Phone Number:</p> <p> @business.phoneNumber</p>
-                                <a class="text-danger" asp-controller="Business" asp-action="DeleteBusiness" asp-route-yelpChildId="@business.YelpChildId">Delete Business</a>
-                            </div>
+                            <label>Is Trip Complete?</label>
+                            <input type="checkbox" checked onclick="return false">
+                            <br />
+                            <br />
                         }
-                    }
-                    <a asp-controller="Business" asp-action="BusinessForm" asp-route-city="@trip.City" asp-route-TripId="@trip.TripID">Add Business</a>
+                        else
+                        {
+                            <label>Is Trip Complete?</label>
+                            <input type="checkbox" unchecked>
+                            <br />
+                            <a asp-controller="Home" asp-action="MarkTripComplete" asp-route-tripId="@trip.TripID">Mark Trip Complete</a>
+                        }
+
+                        <br />
+                        <br />
+                        <br />
+
+
+
+
+
+                        <div class="card-body" style="width: 18rem;">
+                            @foreach (var item in Model.Events)
+                            {
+                                if (item.ParentTripId == trip.TripID)
+                                {
+
+                                    <h3 style="color:dodgerblue">Events:</h3>
+                                    <p class="font-weight-bold">Venue Name:</p> <p> @item.name</p>
+                                    <p class="font-weight-bold">Event Address:</p> <p> @item.address </p>
+                                    <p class="font-weight-bold"> Performer:</p> <p> @item.performerName</p>
+                                    <a class="text-danger" asp-controller="Event" asp-action="DeleteEvent" asp-route-seatGeekChildId="@item.SeatGeekChildId">Delete Event</a>
+
+
+
+                                }
+                            }
+
+
+                            @foreach (var business in Model.Businesses)
+                            {
+                                if (business.ParentTripId == trip.TripID)
+                                {
+                                    <div>
+                                        <h3 style="color:dodgerblue">Businesses:</h3>
+                                        <p class="font-weight-bold">Business Name:</p> <p> @business.name </p>
+                                        <p class="font-weight-bold">Business Address:</p> <p> @business.address1 @business.address2 @business.address3</p>
+                                        <p class="font-weight-bold"> Phone Number:</p> <p> @business.phoneNumber</p>
+                                        <a class="text-danger" asp-controller="Business" asp-action="DeleteBusiness" asp-route-yelpChildId="@business.YelpChildId">Delete Business</a>
+                                    </div>
+                                }
+                            }
+                            <a asp-controller="Business" asp-action="BusinessForm" asp-route-city="@trip.City" asp-route-TripId="@trip.TripID">Add Business</a>
+
+                        </div>
+                    </div>
 
                 </div>
-            </div>
+                <br />
+                <br />
+                <br />
+            }
+
 
         </div>
-        <br />
-        <br />
-        <br />
-    }
-
-
-</div>
+    </center>
+ 
+</body>
+    
