@@ -1,26 +1,30 @@
 ﻿@model PlanFort.Models.ViewModels.EventCityFormResultVM
 
-
-@foreach (var e in Model.Events)
-{
-    <div class="card" style="width: 18rem">
-        <div class="card-body">
-            <p class="font-weight-bold">Event Title</p>
-            <p class="card-text">@e.Title</p>
-            <p class="font-weight-bold">Event City</p>
-            <p class="card-text">@e.City</p>
-            <p class="font-weight-bold">Venue Name</p>
-            <p class="card-text">@e.VenueName</p>
-            <p class="font-weight-bold">Date</p>
-            <p class="card-text">@Model.DateOfTrip</p>
-
-
-
-            <a asp-controller="Event" asp-action="AddEvent" asp-route-id="@e.Id" asp-route-TripId=" @Model.TripID">Add Event</a>
-
-        </div>
+<body style="background-color:black">
+    <center>
+        @foreach (var e in Model.Events)
+        {
+            <div class="card" style="width: 18rem">
+                <div class="card-body">
+                    <p style="color:dodgerblue" class="font-weight-bold">Event Title</p>
+                    <p class="card-text">@e.Title</p>
+                    <p style="color:dodgerblue" class="font-weight-bold">Event City</p>
+                    <p class="card-text">@e.City</p>
+                    <p style="color:dodgerblue" class="font-weight-bold">Venue Name</p>
+                    <p class="card-text">@e.VenueName</p>
+                    <p style="color:dodgerblue" class="font-weight-bold">Date</p>
+                    <p class="card-text">@Model.DateOfTrip</p>
 
 
 
-    </div>
-}
+                    <a asp-controller="Event" asp-action="AddEvent" asp-route-id="@e.Id" asp-route-TripId=" @Model.TripID">Add Event</a>
+
+                </div>
+
+
+
+            </div>
+        }
+    </center>
+
+</body>

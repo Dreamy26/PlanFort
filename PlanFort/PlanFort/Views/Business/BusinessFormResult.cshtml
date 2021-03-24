@@ -2,19 +2,23 @@
 
 @model PlanFort.Models.ViewModels.BusinessFormResultVM
 
-<div>
-    @foreach (var business in Model.Businesses)
-    {
-        <div class="card" style="width: 18rem">
-            <div class="card-body">
-                <p class="font-weight-bold">Business Name</p>
-                <p class="card-text">@business.Name</p>
-                <p class="font-weight-bold">Address</p>
-                <p class="card-text">@business.address</p>
-                <p class="font-weight-bold">City</p>
-                <p class="card-text">@business.City</p>
-                <a asp-controller="Business" asp-action="AddBusiness" asp-route-id="@business.id" asp-route-TripId="@Model.TripID">Add Business</a>
-            </div>
+<body style="background-color:black">
+    <center>
+        <div>
+            @foreach (var business in Model.Businesses)
+            {
+                <div class="card" style="width: 18rem">
+                    <div class="card-body">
+                        <p style="color:dodgerblue" class="font-weight-bold">Business Name:</p>
+                        <p class="card-text">@business.Name</p>
+                        <p style="color:dodgerblue" class="font-weight-bold">Address:</p>
+                        <p class="card-text">@business.address</p>
+                        <p style="color:dodgerblue" class="font-weight-bold">City:</p>
+                        <p class="card-text">@business.City</p>
+                        <a asp-controller="Business" asp-action="AddBusiness" asp-route-id="@business.id" asp-route-TripId="@Model.TripID">Add Business</a>
+                    </div>
+                </div>
+            }
         </div>
-    }
-</div>
+    </center>
+</body>

@@ -1,12 +1,18 @@
 ﻿@model PlanFort.Models.ViewModels.EventCityFormVM
-<form asp-controller="Event" asp-action="EventCityFormResult" method="post">
+<body style="background-color:black">
+    <center>
+        <form asp-controller="Event" asp-action="EventCityFormResult" method="post">
 
-    <label asp-for="City"></label>
-    <input asp-for="City" />
+            <label style="color:dodgerblue" class="font-weight-bold" asp-for="City">City:</label>
+            <input style="color:dodgerblue" class="font-weight-bold" asp-for="City" />
 
-    <label asp-for="DateOfTrip">Date:</label>
-    <input type="date" asp-for="DateOfTrip" />
+            <label style="color:dodgerblue" class="font-weight-bold" asp-for="DateOfTrip">Date:</label>
+            <input style="color:dodgerblue" class="font-weight-bold" type="date" asp-for="DateOfTrip" />
+            <br />
+            <br />
+            <button style="color:dodgerblue" class="font-weight-bold">Search</button>
 
-    <button>Search</button>
+        </form>
+    </center>
 
-</form>
+</body>   
